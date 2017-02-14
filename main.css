@@ -53,6 +53,7 @@ h4  {
 	background-color: rgba(176, 180, 186, 0.9);
 	padding: 2px 2px 2px 12px;
 	z-index: 10;
+	cursor: pointer;
 }
 
 .selector:hover {
