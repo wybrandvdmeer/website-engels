@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<title>website.com</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link rel="stylesheet" type="text/css" href="contact.css">
+	</head>
+</html>
+<body>
+	<div class="slide-show">
+		
+		<!-- Slides. -->
+		<div class="slide fade background-slide1">
+  		</div>
+
+		<div class="slide fade background-slide2">
+  		</div>
+
+		<div class="slide fade background-slide3">
+  		</div>
+
+		<div class="fade-mail background-email-box">
+    		<div class="slide-description"></div>
+  		</div>
+		<div class="logo">
+			<img src="../images/logo.png"/>
+		</div>
+
+		<div class="selector-box">
+			<div class="selector">
+				<a href="./contact.html">
+					<img src="../images/contact.png"/>
+				</a>
+			</div>
+			<div class="selector content-down" onclick="hideContent()">
+				<img src="../images/forebackgroundselector.png"/>
+			</div>
+			<div hidden class="selector content-up" onclick="hideContent()">
+				<img src="../images/backforegroundselector.png"/>
+			</div>
+		</div>
+
+		<div class="main-container">
+			<div class="logo"></div>
+			<div class=main-menu>
+				<ul class="fontclass">
+					<li><a class="linkstyle" href="./../index.html">Home</a></li>
+					<li><a class="linkstyle" href="../bedrijf/bedrijf.html">Bedrijf</a></li>
+					<li><a class="linkstyle" href="./contact.html">Contact</a></li>
+				</ul>
+			</div>
+
+			<iframe src="https://www.123contactform.com/form-2481973/Contact-Lead-Form" scrolling="no" allowtransparency="true" frameborder="0" onmouseover="showEmailBox()" onmouseout="hideEmailBox()" class="content content-contact fade-2sec">
+			</iframe>
+		</div>
+		<div class="footer">meerdesign</div>
+	</div> <!-- slide show. -->
+			
+	<script type="text/javascript" src="../scripts/functionality.js"></script>
+	<script type="text/javascript" src="./scripts/functionality.js"></script>
+</body>
