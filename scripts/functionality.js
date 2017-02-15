@@ -28,6 +28,12 @@ function showContent() {
     var up = document.getElementsByClassName("content-up")[0];
     var down = document.getElementsByClassName("content-down")[0];
     var showContent = getShowContent();
+
+    if(window.initLocalContent !== undefined) {
+        window.initLocalContent();
+        window.initLocalContent = undefined;
+        return;
+    }
    
     if(showContent) {
       content.style.display = "block";
