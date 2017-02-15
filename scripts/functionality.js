@@ -1,3 +1,5 @@
+var showContentOnScreen = true;
+
 showSlides();
 showContent();
 
@@ -12,30 +14,19 @@ function setSlideIndex(slideIndex) {
   sessionStorage.slideIndex = slideIndex;
 }
 
-function getShowContent() {
-  if(sessionStorage.showContent === undefined) {
-    sessionStorage.showContent = true;
-  }
-  return sessionStorage.showContent === 'true';
-}
-
-function setShowContent(showContent) {
-  sessionStorage.showContent = showContent;
-}
-
 function showContent() {
-    var content = document.getElementsByClassName("content")[0];
-    var up = document.getElementsByClassName("content-up")[0];
-    var down = document.getElementsByClassName("content-down")[0];
-    var showContent = getShowContent();
 
     if(window.initLocalContent !== undefined) {
         window.initLocalContent();
         window.initLocalContent = undefined;
         return;
     }
+
+    var content = document.getElementsByClassName("content")[0];
+    var up = document.getElementsByClassName("content-up")[0];
+    var down = document.getElementsByClassName("content-down")[0];
    
-    if(showContent) {
+    if(showContentOnScreen) {
       content.style.display = "block";
       down.style.display = "block";
       up.style.display = "none";
@@ -47,9 +38,8 @@ function showContent() {
 }
 
 function hideContent() {
-    var shwContent = getShowContent();
-    setShowContent(!shwContent);
-    showContent();
+  showContentOnScreen = !showContentOnScreen;
+  showContent();
 }
 
 function hideCurrentBackGround() {
