@@ -175,20 +175,6 @@ ul li {
 	text-decoration: none;
 }
 
-.button-right {
-	position: absolute;
-	right: 2px;
-	top: 45%;
-	padding: 8px 8px;
-}
-
-.button-left {
-	position: absolute;
-	left: 2px;
-	top: 45%;
-	padding: 8px 8px;
-}
-
 .content {
 	background-color: rgba(176, 180, 186, 0.9);
 	color: #091933;
