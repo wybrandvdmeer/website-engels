@@ -34,9 +34,8 @@ h4  {
 
 .logo {
 	position: absolute;
-	top: 9%;
-	top: calc(9% + 2px); 
-	left: 10px;
+	top: 10%;
+	left: 3%;
 }
 
 .selector-box {
