@@ -65,3 +65,15 @@
 	from {opacity: .1} 
 	to {opacity: 1}
 }
+
+@media only screen and (max-device-width: 480px) {
+	iframe {
+		transform: scale(0.6);	
+		transform-origin: center 0;
+	}
+	.content-contact {
+		top: 15%;
+		width: 100%;
+		height: 100%;
+	}
+}

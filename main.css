@@ -202,3 +202,28 @@ ul li {
 	background-color: rgba(0, 0, 0, 0.5);
 	height: 17px;
 }
+
+@media only screen and (max-device-width: 480px) {
+	.logo {
+		display: none;	
+	}
+	.selector-box {
+		display: none;
+	}
+	.content-home {
+		width: 70%;
+	}
+	.main-container {
+		top: 0;
+	}
+	ul li {
+		padding: 10px 15px 10px 15px;
+		margin:  0 5px;
+	}
+	h4 {
+		font-size: 15px;	
+	}
+	p {
+		font-size: 10px;
+	}
+}
