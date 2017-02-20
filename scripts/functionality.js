@@ -2,6 +2,18 @@ var showContentOnScreen = true;
 
 showSlides();
 showContent();
+showBackGroundButton();
+
+function isTecBackGround() {
+  if(sessionStorage.tecBackGround === undefined) {
+    return true;
+  }
+  return sessionStorage.tecBackGround === 'true';
+}
+
+function setTecBackGround(tecBackGround) {
+  sessionStorage.tecBackGround = tecBackGround;
+}
 
 function getSlideIndex() {
   if(sessionStorage.slideIndex === undefined) {
@@ -45,7 +57,7 @@ function hideContent() {
 function hideCurrentBackGround() {
   clearTimeout(sessionStorage.timeOut);
 
-  var slides = document.getElementsByClassName("slide");
+  var slides = getSlides();
   slides[getSlideIndex() - 1].style.display = "none";
 }
 
@@ -59,10 +71,18 @@ function showSlides() {
   } else {
     /* User navigated to new page: lost the timer. 
     */ 
-    var slides = document.getElementsByClassName("slide");
+    var slides = getSlides();
     showSlide(getSlideIndex(), slides);
     showSlidesWithTimer(false);
   }
+}
+
+function getSlides() {
+    if(isTecBackGround()) {
+      return document.getElementsByClassName("slide");
+    } else {
+      return document.getElementsByClassName("nat-slide");
+    }
 }
 
 function showSlidesWithTimer(newImage) {
@@ -80,7 +100,7 @@ function showSlidesWithTimer(newImage) {
       slideIndex++;
     }
   
-    var slides = document.getElementsByClassName("slide");
+    var slides = getSlides();
     if (slideIndex > slides.length) {
       slideIndex = 1;
     } 
@@ -99,3 +119,38 @@ function showSlide(slideIndex, slides) {
 
   slides[slideIndex - 1].style.display = "block";
 }
+
+function toggleBackGroundSeries() {
+  /* Shut down the old serie. 
+  */
+  var slides = getSlides();
+  for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; 
+  }
+
+  clearTimeout(sessionStorage.timeOut);
+
+  /* Toggle. */
+  setTecBackGround(!isTecBackGround());
+
+  /* Show new button and background. 
+  */
+  showBackGroundButton();
+  showSlide(getSlideIndex(), getSlides());
+  showSlidesWithTimer(false);
+}
+
+function showBackGroundButton() {
+  var natBackGroundsButton = document.getElementById('nat-backgrounds-button');  
+  var tecBackGroundsButton = document.getElementById('tec-backgrounds-button');  
+
+  if(isTecBackGround()) {
+    natBackGroundsButton.style.display = 'block';
+    tecBackGroundsButton.style.display = 'none';
+  } else {
+    natBackGroundsButton.style.display = 'none';
+    tecBackGroundsButton.style.display = 'block';
+  }
+}
+
+

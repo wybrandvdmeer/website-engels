@@ -10,14 +10,23 @@
 <body>
 	<div class="slide-show">
 		<!-- Slides. -->
-		<div class="slide fade background-slide1">
+		<div hidden class="slide fade background-slide1">
   		</div>
 
-		<div class="slide fade background-slide2">
+		<div hidden class="slide fade background-slide2">
   		</div>
 
-		<div class="slide fade background-slide3">
+		<div hidden class="slide fade background-slide3">
   		</div>
+
+                <div hidden class="nat-slide fade background-nat-slide1">
+                </div>
+
+                <div hidden class="nat-slide fade background-nat-slide2">
+                </div>
+
+                <div hidden class="nat-slide fade background-nat-slide3">
+                </div>
 
 		<div class="logo">
 			<img src="images/logo.png"/>
@@ -35,6 +44,12 @@
 			<div hidden class="selector content-up" onclick="hideContent()">
 				<img src="images/backforegroundselector.png"/>
 			</div>
+                        <div hidden id="tec-backgrounds-button" class="selector" onclick="toggleBackGroundSeries()">
+                                <img src="images/tec.png"/>
+                        </div>
+                        <div hidden id="nat-backgrounds-button" class="selector" onclick="toggleBackGroundSeries()">
+                                <img src="images/nat.png"/>
+                        </div>
 		</div>
 
 		<div class="main-container">
