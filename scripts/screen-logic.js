@@ -49,75 +49,55 @@ function showContent() {
     }
 }
 
-function hideContent() {
+function toggleContent() {
   showContentOnScreen = !showContentOnScreen;
   showContent();
 }
 
 function hideCurrentBackGround() {
   clearTimeout(sessionStorage.timeOut);
-
   var slides = getSlides();
-  slides[getSlideIndex() - 1].style.display = "none";
+  slides[getSlideIndex()].style.display = "none";
 }
 
 function showCurrentBackGround() {
-  showSlides();
-}
-
-function showSlides() {
-  if(sessionStorage.timeOut === undefined) {
-    showSlidesWithTimer(true);
-  } else {
-    /* User navigated to new page: lost the timer. 
-    */ 
-    var slides = getSlides();
-    showSlide(getSlideIndex(), slides);
-    showSlidesWithTimer(false);
-  }
+  showSlides(getSlideIndex());
 }
 
 function getSlides() {
-    if(isTecBackGround()) {
-      return document.getElementsByClassName("slide");
-    } else {
-      return document.getElementsByClassName("nat-slide");
-    }
+  if(isTecBackGround()) {
+    return document.getElementsByClassName("slide");
+  } 
+  return document.getElementsByClassName("nat-slide");
 }
 
-function showSlidesWithTimer(newImage) {
+function showSlides(slideIndex) {
 
-  if(newImage === undefined) {
-    newImage = true;
-  }
+  var slides = getSlides();
 
-  if(newImage) {
-    var slideIndex = getSlideIndex();
+  if(slideIndex === undefined) {
+    slideIndex = getSlideIndex();
 
     if(slideIndex === undefined) {
-      slideIndex = 1;
+      slideIndex = 0;
     } else {
       slideIndex++;
     }
-  
-    var slides = getSlides();
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    } 
 
+    if (slideIndex >= slides.length) {
+      slideIndex = 0;
+    }
+    
     setSlideIndex(slideIndex);
-    showSlide(slideIndex, slides);
-  }
+  } 
 
-  sessionStorage.timeOut = setTimeout(showSlidesWithTimer, 10000);
-}
-
-function showSlide(slideIndex, slides) {
   for (var i = 0; i < slides.length; i++) {
       slides[i].style.display = "none"; 
   }
 
-  slides[slideIndex - 1].style.display = "block";
+  slides[slideIndex].style.display = "block";
+
+  sessionStorage.timeOut = setTimeout(showSlides, 10000);
 }
 
 function toggleBackGroundSeries() {
@@ -130,14 +110,12 @@ function toggleBackGroundSeries() {
 
   clearTimeout(sessionStorage.timeOut);
 
-  /* Toggle. */
   setTecBackGround(!isTecBackGround());
 
   /* Show new button and background. 
   */
   showBackGroundButton();
-  showSlide(getSlideIndex(), getSlides());
-  showSlidesWithTimer(false);
+  showSlides();
 }
 
 function showBackGroundButton() {

@@ -11,7 +11,7 @@ function hideEmailBox() {
 }
 
 window.initLocalContent = function initLocalContent() {
-	/* Switching on the iframe is done by function in html. 
-	This function is defined to prevent switching the content on on by showContent().
+	/* The iframe is switched on when it is loaded by a function in the html page.
+	This function prevents switching the content on by showContent().
 	*/
 };
